@@ -1,4 +1,5 @@
 import com.sun.org.glassfish.gmbal.Description;
+import lotto.LottoNumberManuallySelector;
 import lotto.UserInputValidator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ public class UserInputTest {
         int purchaseInput = 5000;
         int manualCountInput = -1;
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            UserInputValidator.validateManualCount(purchaseInput, manualCountInput);
+            UserInputValidator.validateManualSelectingCounts(purchaseInput, manualCountInput);
         }).withMessage("수동 입력 개수는 자연수만 입력 가능합니다.");
     }
 
@@ -34,27 +35,37 @@ public class UserInputTest {
         int manualCountInput = 6;
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            UserInputValidator.validateManualCount(purchaseInput, manualCountInput);
+            UserInputValidator.validateManualSelectingCounts(purchaseInput, manualCountInput);
         }).withMessage("로또 구매 금액을 초과하였습니다.");
     }
 
     @Test
     @Description("로또 번호 수동 입력에 대한 유저 입력 값이 1~45 사이의 수가 아니면 IllegalArgumentException 이 발생하는지 테스트")
     public void invalidInputForManualPickTest() {
-        int[] testInput = {1, 2, 3, 4, 5, 48};
+        String testInput = "1,2,3,4,5,46";
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            UserInputValidator.validateManualPick(testInput);
+            new LottoNumberManuallySelector(testInput);
         }).withMessage("로또 번호는 1~45 사이의 수만 입력 가능합니다.");
     }
 
     @Test
-    @Description("로또 번호 수동 입력에 대한 유저 입력 값이 6개가 아니면 아니면 IllegalArgumentException 이 발생하는지 테스트")
+    @Description("로또 번호 수동 입력에 대한 유저 입력 값이 6개가 아니면 IllegalArgumentException 이 발생하는지 테스트")
     public void invalidInputForManualPickCountsTest() {
-        int[] testInput = {1, 2, 3, 4, 5, 6, 7, 8};
+        String testInput = "1,2,3,4,5,6,7";
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            UserInputValidator.validateManualPick(testInput);
+            new LottoNumberManuallySelector(testInput);
+        }).withMessage("6개의 로또 번호를 선택하셔야 합니다.");
+    }
+
+    @Test
+    @Description("로또 번호 수동 입력에 대한 유저 입력 값이 중복되면 IllegalArgumentException 이 발생하는지 테스트")
+    public void duplicatedNumberForManualSelectingTest() {
+        String testInput = "1,2,3,4,5,5";
+
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            new LottoNumberManuallySelector(testInput);
         }).withMessage("6개의 로또 번호를 선택하셔야 합니다.");
     }
 }

@@ -1,5 +1,8 @@
 [TODO]
 - 수동, 자동으로 뽑은 번호 보여주는 클래스 구현
+- 리팩토링 진행
+  - Indentation 줄이기
+    - LottoNumber, LottoPaper 만들기
 
 [DONE]
 - User Input
