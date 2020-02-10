@@ -19,16 +19,16 @@ public class LottoNumberAutoSelector {
         return lottoPaper;
     }
 
-    private static LottoNumber[] getRandomLottoNumbers() {
-        LottoNumber[] selectedRandomNumbers = new LottoNumber[6];
+    private static List<LottoNumber> getRandomLottoNumbers() {
+        List<LottoNumber> selectedRandomNumbers = new ArrayList<>();
 
-        List<LottoNumber> lottoNumbers = new ArrayList<>();
-        numbers.addAll(lottoNumbers);
+        List<LottoNumber> tempLottoList = new ArrayList<>();
+        tempLottoList.addAll(lottoNumbers);
 
         Random randomNumberGenerator = new Random();
         for (int i = 0; i < 6; i++) {
-            selectedRandomNumbers[i] = numbers
-                .remove((randomNumberGenerator.nextInt(45) % (numbers.size())));
+            selectedRandomNumbers.add(
+                tempLottoList.remove((randomNumberGenerator.nextInt(45) % (tempLottoList.size()))));
         }
 
         return selectedRandomNumbers;

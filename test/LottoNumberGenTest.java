@@ -10,11 +10,8 @@ public class LottoNumberGenTest {
     @Description("로또 숫자가 자동으로 6개 선택되어 생성되는지 테스트")
     public void isSixRandomNumberGenerated() {
         int autoSelectedCount = 100;
-        LottoNumberAutoSelector lottoNumberAutoSelector = new LottoNumberAutoSelector(
-            autoSelectedCount);
-        int[][] randomNumbersArray = lottoNumberAutoSelector.getAutoSelectedNumbers();
-        for (int[] randomNumbers : randomNumbersArray) {
-            assertThat(randomNumbers).hasSize(6);
+        for (int i =0 ;i <autoSelectedCount; i++) {
+            assertThat(LottoNumberAutoSelector.autoMarking().getMarkedLottoNumbers()).hasSize(6);
         }
     }
 
@@ -22,11 +19,8 @@ public class LottoNumberGenTest {
     @Description("자동으로 생성된 로또 숫자들이 중복되지 않는지 테스트")
     public void isNotDuplicatedNumbers() {
         int autoSelectedCount = 10;
-        LottoNumberAutoSelector lottoNumberAutoSelector = new LottoNumberAutoSelector(
-            autoSelectedCount);
-        int[][] randomNumbersArray = lottoNumberAutoSelector.getAutoSelectedNumbers();
-        for (int[] randomNumbers : randomNumbersArray) {
-            assertThat(randomNumbers).doesNotHaveDuplicates();
+        for (int i =0 ;i <autoSelectedCount; i++) {
+            assertThat(LottoNumberAutoSelector.autoMarking().getMarkedLottoNumbers()).doesNotHaveDuplicates();
         }
     }
 }

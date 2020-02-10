@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     final static int LOTTO_PRICE = 1000;
-    static LottoPapers lottoPapers;
+    static LottoPapers lottoPapers = new LottoPapers();
 
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
@@ -34,9 +34,8 @@ public class Main {
         for (int i = 0; i < availableAmount; i++) {
             LottoPaper lottoPaper = LottoNumberAutoSelector.autoMarking();
             lottoPapers.addLottoPaper(lottoPaper);
-
-//        PurchaseHistory.print(intArray4ManualSelect, intArray4AutoSelect);
         }
+        PurchaseHistory.print(lottoPapers);
 
     }
 }

@@ -27,7 +27,7 @@ public class UserInputValidator {
     }
 
     public static void validateDuplicationNumbers(LottoNumber[] lottoNumbers) {
-        for (LottoNumber lottoNumber : lottoNumbers){
+        for (LottoNumber lottoNumber : lottoNumbers) {
 
         }
     }

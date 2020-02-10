@@ -1,8 +1,7 @@
 [TODO]
-- 수동, 자동으로 뽑은 번호 보여주는 클래스 구현
-- 리팩토링 진행
-  - Indentation 줄이기
-    - LottoNumber, LottoPaper 만들기
+- 당첨 번호 뽑는 클래스 구현
+- Prize enum 구현
+- 당첨 결과를 뽑는 클래스 구현
 
 [DONE]
 - User Input
@@ -12,3 +11,7 @@
 - Lotto Number Select
   - 자동으로 로또 번호 뽑아주는 클래스 구현
   - 자동으로 뽑힌 로또 번호에 대한 테스트 작성
+- 수동, 자동으로 뽑은 번호 보여주는 클래스 구현
+- 리팩토링 진행
+  - Indentation 줄이기
+  - LottoNumber, LottoPaper 만들기

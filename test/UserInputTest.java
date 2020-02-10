@@ -45,7 +45,7 @@ public class UserInputTest {
         String testInput = "1,2,3,4,5,46";
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            new LottoNumberManuallySelector(testInput);
+            LottoNumberManuallySelector.marking(testInput);
         }).withMessage("로또 번호는 1~45 사이의 수만 입력 가능합니다.");
     }
 
@@ -55,7 +55,7 @@ public class UserInputTest {
         String testInput = "1,2,3,4,5,6,7";
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            new LottoNumberManuallySelector(testInput);
+            LottoNumberManuallySelector.marking(testInput);
         }).withMessage("6개의 로또 번호를 선택하셔야 합니다.");
     }
 
@@ -65,7 +65,7 @@ public class UserInputTest {
         String testInput = "1,2,3,4,5,5";
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            new LottoNumberManuallySelector(testInput);
-        }).withMessage("6개의 로또 번호를 선택하셔야 합니다.");
+            LottoNumberManuallySelector.marking(testInput);
+        }).withMessage("로또 번호는 중복될 수 없습니다.");
     }
 }
