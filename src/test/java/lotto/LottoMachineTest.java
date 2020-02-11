@@ -30,7 +30,7 @@ class LottoMachineTest {
     }
 
     @ParameterizedTest
-    @Description("로또 기계에서 로또 티켓을 한 장 수동 생성하기 위해 파라미터로 전달되는 숫자 List가 null인 경우 에러가 발생하는지 테스트.")
+    @Description("로또 기계에서 로또 티켓을 한 장 수동 생성하기 위해 파라미터로 전달되는 번호 List가 null인 경우 에러가 발생하는지 테스트.")
     @NullAndEmptySource
     void generateLottoTicketManually_NullInputTest(List<Integer> manuallyChosenNumbers) {
         Assertions.assertThatIllegalArgumentException()
@@ -39,7 +39,7 @@ class LottoMachineTest {
     }
 
     @ParameterizedTest
-    @Description("로또 기계에서 로또 티켓을 한 장 수동 생성하기 위해 파라미터로 전달되는 숫자 List에 로또 숫자로서 유효하지 않은 값이 포함되어 있는 경우 에러를 발생하는지 테스트.")
+    @Description("로또 기계에서 로또 티켓을 한 장 수동 생성하기 위해 파라미터로 전달되는 숫자 List에 로또 번호로서 유효하지 않은 값이 포함되어 있는 경우 에러를 발생하는지 테스트.")
     @MethodSource("generateLottoTicketManually_InvalidLottoNumberTestData")
     void generateLottoTicketManually_InvalidLottoNumberTest(List<Integer> manuallyChosenNumbers) {
         Assertions.assertThatIllegalArgumentException()

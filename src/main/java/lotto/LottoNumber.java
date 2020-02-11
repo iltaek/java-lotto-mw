@@ -2,7 +2,7 @@ package lotto;
 
 public enum LottoNumber {
     /*
-        형식 : 로또_숫자_이름(해당하는_숫자)
+        형식 : 로또_번호_이름(해당하는_번호)
      */
     LOTTO_NUMBER_1(1),
     LOTTO_NUMBER_2(2),
