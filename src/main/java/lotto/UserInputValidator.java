@@ -26,9 +26,9 @@ public class UserInputValidator {
         }
     }
 
-    public static void validateDuplicationNumbers(LottoNumber[] lottoNumbers) {
-        for (LottoNumber lottoNumber : lottoNumbers) {
-
+    public static void validateSelectedSevenNumbers(String[] manualSelectInts) {
+        if (manualSelectInts.length != 7) {
+            throw new IllegalArgumentException("7개의 당첨 번호를 선택하셔야 합니다.");
         }
     }
 }

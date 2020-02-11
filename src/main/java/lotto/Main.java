@@ -23,6 +23,7 @@ public class Main {
 
         availableAmount -= userInput4ManualSelectingCounts;
 
+        // 수동 구입
         String userInput4ManualSelect;
         for (int i = 0; i < userInput4ManualSelectingCounts; i++) {
             System.out.println("수동으로 구매할 번호를 입력해 주세요.");
@@ -31,11 +32,24 @@ public class Main {
             lottoPapers.addLottoPaper(lottoPaper);
         }
 
+        // 자동 구입
         for (int i = 0; i < availableAmount; i++) {
             LottoPaper lottoPaper = LottoNumberAutoSelector.autoMarking();
             lottoPapers.addLottoPaper(lottoPaper);
         }
-        PurchaseHistory.print(lottoPapers);
 
+        // 구매 내역
+        PurchaseHistory.print(lottoPapers, userInput4ManualSelectingCounts);
+
+        // 지난 주 당첨 번호 입력
+        String userInput4winningNumbers;
+        System.out.println("지난 주 당첨 번호를 입력해 주세요.");
+        userInput4winningNumbers = userInput.next();
+        System.out.println("보너스 볼을 입력해 주세요.");
+        userInput4winningNumbers += "," + userInput.next();
+
+        LottoDraw.inputWinningLottoPaper(userInput4winningNumbers);
+        LottoDraw.submitMyLottoPapers(lottoPapers);
+        LottoDraw.getLottoResult();
     }
 }

@@ -1,42 +1,63 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class LottoPaper {
 
-    private boolean isAutoSelected;
-    private List<LottoNumber> markedLottoNumbers = new ArrayList<>();
-    private List<Integer> checkedNumbers = new ArrayList<>();
+    private Set<LottoNumber> markedLottoNumbers = new LinkedHashSet<>();
 
-    public LottoPaper(boolean isAutoSelected, List<LottoNumber> markedLottoNumbers) {
-        this.isAutoSelected = isAutoSelected;
+    public LottoPaper(Set<LottoNumber> markedLottoNumbers) {
         for (LottoNumber markedLottoNumber : markedLottoNumbers) {
-            checkIsDuplicatedNumber(markedLottoNumber);
-            this.checkedNumbers.add(markedLottoNumber.selectedNumber);
+            markedLottoNumbers.add(markedLottoNumber);
             this.markedLottoNumbers.add(markedLottoNumber);
         }
 
+        checkIsDuplicatedNumber();
     }
 
-    public boolean isAutoSelected() {
-        return isAutoSelected;
-    }
 
-    public List<LottoNumber> getMarkedLottoNumbers() {
+    public Set<LottoNumber> getMarkedLottoNumbers() {
         return markedLottoNumbers;
     }
 
-    private void checkIsDuplicatedNumber(LottoNumber current) {
-        if (checkedNumbers.contains(current.selectedNumber)) {
+    private void checkIsDuplicatedNumber() {
+        if (markedLottoNumbers.size() != 6) {
             throw new IllegalArgumentException("로또 번호는 중복될 수 없습니다.");
         }
     }
 
+    public Prize matchingCountsLottoNumbers(WinningNumbers winningNumbers) {
+        int matchingCounts = 0;
+        Set<LottoNumber> winningLottoNumbers = winningNumbers.getWinningNumbers();
+
+        Iterator<LottoNumber> lottoNumberIterator = winningLottoNumbers.iterator();
+
+        // 당첨 번호 = 1 가산점
+        for (int i = 0; i < winningLottoNumbers.size() - 1; i++) {
+            matchingCounts += match(lottoNumberIterator.next(), 1);
+        }
+
+        // 보너스 당첨 번호 = 10 가산점
+        matchingCounts += match(lottoNumberIterator.next(), 10);
+
+        return Prize.of(matchingCounts);
+    }
+
+    private int match(LottoNumber winningNumber, int score) {
+        if (markedLottoNumbers.contains(winningNumber)) {
+            return score;
+        }
+        return 0;
+    }
+
+    @Override
     public String toString() {
         String resultString = "";
-        for (int i = 0; i < 6; i++) {
-            resultString += markedLottoNumbers.get(i).selectedNumber + ",";
+        Iterator<LottoNumber> lottoNumberIterator = markedLottoNumbers.iterator();
+        while (lottoNumberIterator.hasNext()) {
+            resultString += lottoNumberIterator.next() + ",";
         }
         return resultString.substring(0, resultString.length() - 1);
     }

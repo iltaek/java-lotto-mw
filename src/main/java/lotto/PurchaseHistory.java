@@ -5,27 +5,19 @@ import java.util.List;
 public class PurchaseHistory {
 
     private static String purchasedNumbers = "";
-    private static int autoSelectedPapers = 0;
 
-    public static void print(LottoPapers lottoPapers) {
+    public static void print(LottoPapers lottoPapers, int manuallySelectedPapers) {
         List<LottoPaper> lottoPaperList = lottoPapers.getLottoPapers();
 
+        System.out.println(
+            "수동으로 " + manuallySelectedPapers + "장, 자동으로 "
+                + (lottoPaperList.size() - manuallySelectedPapers)
+                + "개를 구매했습니다.");
+
         for (LottoPaper lottoPaper : lottoPaperList) {
-            countAutoSelected(lottoPaper);
             purchasedNumbers += "[" + lottoPaper.toString() + "]\n";
         }
 
-        System.out.println(
-            "수동으로 " + (lottoPaperList.size() - autoSelectedPapers) + "장, 자동으로 "
-                + autoSelectedPapers
-                + "개를 구매했습니다.");
-
         System.out.println(purchasedNumbers);
-    }
-
-    private static void countAutoSelected(LottoPaper lottoPaper) {
-        if (lottoPaper.isAutoSelected()) {
-            autoSelectedPapers++;
-        }
     }
 }

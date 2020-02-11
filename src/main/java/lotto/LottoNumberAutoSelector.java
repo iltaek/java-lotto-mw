@@ -1,8 +1,10 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class LottoNumberAutoSelector {
 
@@ -10,17 +12,17 @@ public class LottoNumberAutoSelector {
 
     static {
         for (int i = 1; i <= 45; i++) {
-            lottoNumbers.add(new LottoNumber(i));
+            lottoNumbers.add(LottoNumber.of(i));
         }
     }
 
     public static LottoPaper autoMarking() {
-        LottoPaper lottoPaper = new LottoPaper(true, getRandomLottoNumbers());
+        LottoPaper lottoPaper = new LottoPaper(getRandomLottoNumbers());
         return lottoPaper;
     }
 
-    private static List<LottoNumber> getRandomLottoNumbers() {
-        List<LottoNumber> selectedRandomNumbers = new ArrayList<>();
+    private static Set<LottoNumber> getRandomLottoNumbers() {
+        Set<LottoNumber> selectedRandomNumbers = new LinkedHashSet<>();
 
         List<LottoNumber> tempLottoList = new ArrayList<>();
         tempLottoList.addAll(lottoNumbers);

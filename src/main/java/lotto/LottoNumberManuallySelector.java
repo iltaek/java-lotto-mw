@@ -1,7 +1,7 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class LottoNumberManuallySelector {
 
@@ -12,18 +12,18 @@ public class LottoNumberManuallySelector {
 
         UserInputValidator.validateSelectedSixNumbers(manuallySelectedNumberStrArray);
 
-        List<LottoNumber> lottoNumbers = convertStrArrayToLottoNumberArray(
+        Set<LottoNumber> lottoNumbers = convertStrArrayToLottoNumberArray(
             manuallySelectedNumberStrArray);
 
-        LottoPaper lottoPaper = new LottoPaper(false, lottoNumbers);
+        LottoPaper lottoPaper = new LottoPaper(lottoNumbers);
 
         return lottoPaper;
     }
 
-    private static List<LottoNumber> convertStrArrayToLottoNumberArray(String[] strArray) {
-        List<LottoNumber> lottoNumbers = new ArrayList<>();
+    private static Set<LottoNumber> convertStrArrayToLottoNumberArray(String[] strArray) {
+        Set<LottoNumber> lottoNumbers = new LinkedHashSet<>();
         for (int i = 0; i < strArray.length; i++) {
-            lottoNumbers.add(new LottoNumber(Integer.parseInt(strArray[i])));
+            lottoNumbers.add(LottoNumber.of(Integer.parseInt(strArray[i])));
         }
 
         return lottoNumbers;
