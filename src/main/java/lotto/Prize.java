@@ -31,7 +31,7 @@ public enum Prize {
         }
     }
 
-    public int getPrizeAmount() {
+    public int is() {
         return prizeAmount;
     }
 }

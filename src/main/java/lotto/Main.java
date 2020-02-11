@@ -50,6 +50,6 @@ public class Main {
 
         LottoDraw.inputWinningLottoPaper(userInput4winningNumbers);
         LottoDraw.submitMyLottoPapers(lottoPapers);
-        LottoDraw.getLottoResult();
+        LottoDraw.printLottoResult();
     }
 }

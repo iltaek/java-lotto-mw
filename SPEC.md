@@ -1,8 +1,7 @@
 [TODO]
-- 당첨 결과를 뽑는 클래스 구현
-  - 통계 클래스 구현
 - 리팩토링
   - 유사 클래스 정리 고려(LottoPaper, WinningNumbers 등)
+  - 자료구조 검토 (LinkedHashSet)
 
 [DONE]
 - User Input
@@ -20,3 +19,5 @@
 - Prize enum 구현
 - 버그 수정
   - 중복 테스트에 LottoNumber가 아니라, LottoNumber.selectedNumber 값을 비교해야 
+- 당첨 결과를 뽑는 클래스 구현
+  - 통계 클래스 구현
