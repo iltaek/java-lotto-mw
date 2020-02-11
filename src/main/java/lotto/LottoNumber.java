@@ -55,4 +55,13 @@ public enum LottoNumber {
     LottoNumber(int lottoNumber) {
         this.lottoNumber = lottoNumber;
     }
+
+    public boolean isCorrespondingLottoNumber(int number) {
+        return this.lottoNumber == number;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(lottoNumber);
+    }
 }
