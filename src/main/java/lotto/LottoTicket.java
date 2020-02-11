@@ -8,6 +8,12 @@ public class LottoTicket {
     private final List<LottoNumber> lottoTicket;
 
     public LottoTicket(List<LottoNumber> lottoNumbers) {
+        checkValidation(lottoNumbers);
+
+        this.lottoTicket = lottoNumbers;
+    }
+
+    private void checkValidation(List<LottoNumber> lottoNumbers) {
         if (lottoNumbers == null || lottoNumbers.size() != LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE) {
             throw new IllegalArgumentException(LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE_ERROR_MESSAGE);
         }
@@ -16,8 +22,6 @@ public class LottoTicket {
         if (lottoNumbersWithoutDuplicates.size() != LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE) {
             throw new IllegalArgumentException(LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE_ERROR_MESSAGE);
         }
-
-        this.lottoTicket = lottoNumbers;
     }
 
     @Override
