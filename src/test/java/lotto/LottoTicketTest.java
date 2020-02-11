@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 class LottoTicketTest {
     @ParameterizedTest
-    @Description("로또 티켓을 생성하기 위해 파라미터로 전달되는 로또 숫자 List가 null인 경우 에러가 발생하는지 테스트.")
+    @Description("로또 티켓을 생성하기 위해 파라미터로 전달되는 로또 번호 List가 null인 경우 에러가 발생하는지 테스트.")
     @NullAndEmptySource
     void nullInputTest(List<LottoNumber> lottoNumbers) {
         Assertions.assertThatIllegalArgumentException()
@@ -22,7 +22,7 @@ class LottoTicketTest {
     }
 
     @ParameterizedTest
-    @Description("로또 티켓을 생성하기 위해 파라미터로 전달되는 로또 숫자 List가 다양한 크기를 가질 때 올바르게 대처하는지 테스트.")
+    @Description("로또 티켓을 생성하기 위해 파라미터로 전달되는 로또 번호 List가 다양한 크기를 가질 때 올바르게 대처하는지 테스트.")
     @MethodSource("sizeOfInputTestData")
     void sizeOfInputTest(boolean isErrorExpected, List<LottoNumber> lottoNumbers) {
         if (isErrorExpected) {
@@ -49,7 +49,7 @@ class LottoTicketTest {
     }
 
     @ParameterizedTest
-    @Description("로또 티켓을 생성하기 위해 파라미터로 전달되는 로또 숫자 List에 중복 값이 있는 경우 에러가 발생하는지 테스트.")
+    @Description("로또 티켓을 생성하기 위해 파라미터로 전달되는 로또 번호 List에 중복 값이 있는 경우 에러가 발생하는지 테스트.")
     @MethodSource("duplicatedInputTestData")
     void duplicatedInputTest(List<LottoNumber> lottoNumbers) {
         Assertions.assertThatIllegalArgumentException()
