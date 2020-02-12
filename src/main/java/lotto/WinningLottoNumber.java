@@ -33,4 +33,14 @@ public class WinningLottoNumber {
             throw new IllegalArgumentException(LottoStaticConstants.LOTTO_BONUS_NUMBER_DUPLICATED_ERROR_MESSAGE);
         }
     }
+
+    public int countMatchingNumbers(List<LottoNumber> candidateLottoNumbers) {
+        return (int) candidateLottoNumbers.stream()
+                .filter(winnerLottoNumbers:: contains)
+                .count();
+    }
+
+    public boolean doesContainBonusNumber(List<LottoNumber> candidateLottoNumbers) {
+        return candidateLottoNumbers.contains(bonusNumber);
+    }
 }
