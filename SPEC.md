@@ -1,4 +1,7 @@
 # 구현해야 할 사항 목록
+ * Model 구현
+   - 로또 당첨 등수를 정의한 LottoResult 클래스.
+   - 각 로또 티켓에 대해 당첨 결과를 확인하는 LottoResultDetector 클래스. 
    
 # 구현 완료 한 사항 목록
  * Model 구현
