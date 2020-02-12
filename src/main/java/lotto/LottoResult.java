@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public enum  LottoResult {
     /*
         형식 : 상_이름(일치하는 숫자 갯수, 상금)
@@ -21,5 +23,16 @@ public enum  LottoResult {
 
     public boolean isCorrespondingMatchingNumberCount(int count) {
         return this.matchingNumberCount == count;
+    }
+
+    public static class MoneyPrizeDistributor {
+        public float getSumOfTotalMoneyPrizes(List<LottoResult> lottoResults) {
+            float sumOfTotalMoneyPrizes = 0;
+            for (LottoResult lottoResult : lottoResults) {
+                sumOfTotalMoneyPrizes += lottoResult.prizeMoney;
+            }
+
+            return sumOfTotalMoneyPrizes;
+        }
     }
 }

@@ -9,4 +9,31 @@ public class LottoTickets {
     public void addLottoTicket(LottoTicket lottoTicket) {
         this.lottoTickets.add(lottoTicket);
     }
+
+    public LottoResults getLottoResults(WinningLottoNumber winningLottoNumber) {
+        LottoResults lottoResults = new LottoResults();
+        LottoResultDetector lottoResultDetector = new LottoResultDetector();
+
+        for (LottoTicket lottoTicket : lottoTickets) {
+            LottoResult lottoResult = lottoResultDetector.getLottoResult(lottoTicket, winningLottoNumber);
+            lottoResults.addLottoResult(lottoResult);
+        }
+
+        return lottoResults;
+    }
+
+    public int numberOfLottoTicketPurchased() {
+        return this.lottoTickets.size();
+    }
+
+    public String printAllLottoNumbers() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (LottoTicket lottoTicket : this.lottoTickets) {
+            stringBuilder.append(lottoTicket)
+                    .append("\n");
+        }
+
+        return stringBuilder.toString();
+    }
 }
