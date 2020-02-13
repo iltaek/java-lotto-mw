@@ -50,13 +50,13 @@ class LottoOutputPrinterTest {
     @Test
     @Description("로또 구매 완료 후 구매 내역이 정리되어 출력되는 것을 확인할 수 있는 테스트.")
     void printResultOfPurchaseTest() {
-        System.out.println(new LottoOutputPrinter().printResultOfPurchase(lottoTickets, 2));
+        new LottoOutputPrinter().printResultOfPurchase(lottoTickets, 2);
     }
 
     @Test
     @Description("로또 구매 완료 후 당첨 내역이 정리되어 출력되는 것을 확인할 수 있는 테스트.")
     void printResultOfStatisticsTest() {
-        System.out.println(new LottoOutputPrinter().printResultOfStatistics(lottoResults));
+        new LottoOutputPrinter().printResultOfStatistics(lottoResults);
 
         assertEquals(1.0, lottoResults.getRateOfReturn());
     }

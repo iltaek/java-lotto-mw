@@ -1,18 +1,20 @@
 package lotto;
 
 public class LottoOutputPrinter {
-    public String printResultOfPurchase(LottoTickets lottoTickets, int numberOfLottoTicketPurchasedManually) {
-        return "수동으로 " +
-                numberOfLottoTicketPurchasedManually +
+    public void printResultOfPurchase(LottoTickets lottoTickets, int numberOfManuallyPurchasedLottoTicket) {
+        String result =  "수동으로 " +
+                numberOfManuallyPurchasedLottoTicket +
                 "장, 자동으로 " +
-                (lottoTickets.numberOfLottoTicketPurchased() - numberOfLottoTicketPurchasedManually) +
+                (lottoTickets.numberOfLottoTicketPurchased() - numberOfManuallyPurchasedLottoTicket) +
                 "장을 구매했습니다." +
                 "\n" +
                 lottoTickets.printAllLottoNumbers();
+
+        System.out.println(result);
     }
 
-    public String printResultOfStatistics(LottoResults lottoResults) {
-        return "당첨 통계" +
+    public void printResultOfStatistics(LottoResults lottoResults) {
+        String result =  "당첨 통계" +
                 "\n" +
                 "----------------------------------------" +
                 "\n" +
@@ -39,5 +41,7 @@ public class LottoOutputPrinter {
                 "총 수익률은 " +
                 lottoResults.getRateOfReturn() +
                 "입니다.";
+
+        System.out.println(result);
     }
 }
