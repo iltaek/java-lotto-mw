@@ -10,6 +10,12 @@ public class LottoTickets {
         this.lottoTickets.add(lottoTicket);
     }
 
+    public void addAllLottoTickets(LottoTickets lottoTickets) {
+        for (LottoTicket lottoTicket : lottoTickets.lottoTickets) {
+            addLottoTicket(lottoTicket);
+        }
+    }
+
     public LottoResults getLottoResults(LottoWinningNumber lottoWinningNumber) {
         LottoResults lottoResults = new LottoResults();
         LottoResultDetector lottoResultDetector = new LottoResultDetector();

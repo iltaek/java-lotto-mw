@@ -1,6 +1,4 @@
 # 구현해야 할 사항 목록
- * Controller 구현
-   - 로또 프로그램을 실행하는 LottoMain 클래스.
     
 # 구현 완료 한 사항 목록
  * Model 구현
@@ -17,4 +15,6 @@
  * View 구현
    - 로또 프로그램 실행 결과를 받아 요구 사항에 맞게 출력해주는 LottoOutputPrinter 클래스.
    - 로또 프로그램 구동을 위해 사용자 입력 값을 받는 LottoUserInputReceiver 클래스.
+ * Controller 구현
+   - 로또 프로그램을 실행하는 LottoMain 클래스.
    
