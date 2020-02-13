@@ -13,4 +13,5 @@ public class LottoStaticConstants {
     public static final String LOTTO_INPUT_NUMBER_INVALID_ERROR_MESSAGE = "음수가 아닌 정수가 입력되어야 합니다.";
     public static final String LOTTO_INPUT_NUMBER_NOT_MULTIPLE_OF_THOUSAND_ERROR_MESSAGE = "로또 구입 금액은 로또 한 장 가격인 1000원의 배수여야 합니다.";
     public static final String LOTTO_INPUT_NUMBER_EXCEED_ERROR_MESSAGE = "로또 구입 금액을 초과하여 구매할 수 없습니다.";
+    public static final String LOTTO_INPUT_NUMBER_ZERO_MESSAGE = "로또를 구매하지 않아 프로그램을 종료합니다.";
 }
