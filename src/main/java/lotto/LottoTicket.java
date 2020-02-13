@@ -24,12 +24,12 @@ public class LottoTicket {
         }
     }
 
-    public int countMatchingNumbers(WinningLottoNumber winningLottoNumber) {
-        return winningLottoNumber.countMatchingNumbers(this.lottoTicket);
+    public int countMatchingNumbers(LottoWinningNumber lottoWinningNumber) {
+        return lottoWinningNumber.countMatchingNumbers(this.lottoTicket);
     }
 
-    public boolean doesContainBonusNumber(WinningLottoNumber winningLottoNumber) {
-        return winningLottoNumber.doesContainBonusNumber(this.lottoTicket);
+    public boolean doesContainBonusNumber(LottoWinningNumber lottoWinningNumber) {
+        return lottoWinningNumber.doesContainBonusNumber(this.lottoTicket);
     }
 
     @Override

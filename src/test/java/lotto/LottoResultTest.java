@@ -15,13 +15,13 @@ class LottoResultTest {
     @ParameterizedTest
     @Description("구입한 로또 티켓과 로또 당첨 번호를 파라미터로 전달하였을 때 로또 당첨 결과를 올바르게 알려주는지 테스트.")
     @MethodSource("getLottoResultTestData")
-    void getLottoResultTest(LottoTicket candidateLottoTicket, WinningLottoNumber winningLottoNumber, LottoResult expectedLottoResult) {
-        LottoResult actualLottoResult = new LottoResultDetector().getLottoResult(candidateLottoTicket, winningLottoNumber);
+    void getLottoResultTest(LottoTicket candidateLottoTicket, LottoWinningNumber lottoWinningNumber, LottoResult expectedLottoResult) {
+        LottoResult actualLottoResult = new LottoResultDetector().getLottoResult(candidateLottoTicket, lottoWinningNumber);
         assertEquals(expectedLottoResult, actualLottoResult);
     }
 
     private static Stream<Arguments> getLottoResultTestData() {
-        LottoNumber[] winningLottoNumbers = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_4, LottoNumber.LOTTO_NUMBER_5, LottoNumber.LOTTO_NUMBER_6};
+        LottoNumber[] lottoWinningNumbers = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_4, LottoNumber.LOTTO_NUMBER_5, LottoNumber.LOTTO_NUMBER_6};
         LottoNumber bonusNumber = LottoNumber.LOTTO_NUMBER_7;
 
         LottoNumber[] lottoNumbers_ExpectingNoPrize_1 = {LottoNumber.LOTTO_NUMBER_40, LottoNumber.LOTTO_NUMBER_41, LottoNumber.LOTTO_NUMBER_42, LottoNumber.LOTTO_NUMBER_43, LottoNumber.LOTTO_NUMBER_44, LottoNumber.LOTTO_NUMBER_45};
@@ -34,7 +34,7 @@ class LottoResultTest {
         LottoNumber[] lottoNumbers_ExpectingSecondPrize = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_4, LottoNumber.LOTTO_NUMBER_5, LottoNumber.LOTTO_NUMBER_7};
         LottoNumber[] lottoNumbers_ExpectingFirstPrize = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_4, LottoNumber.LOTTO_NUMBER_5, LottoNumber.LOTTO_NUMBER_6};
 
-        WinningLottoNumber winningLottoNumber = new WinningLottoNumber(Arrays.asList(winningLottoNumbers), bonusNumber);
+        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(Arrays.asList(lottoWinningNumbers), bonusNumber);
 
         LottoTicket candidateLottoTicket_ExpectingNoPrize_1 = new LottoTicket(Arrays.asList(lottoNumbers_ExpectingNoPrize_1));
         LottoTicket candidateLottoTicket_ExpectingNoPrize_2 = new LottoTicket(Arrays.asList(lottoNumbers_ExpectingNoPrize_2));
@@ -47,15 +47,15 @@ class LottoResultTest {
         LottoTicket candidateLottoTicket_ExpectingFirstPrize = new LottoTicket(Arrays.asList(lottoNumbers_ExpectingFirstPrize));
 
         return Stream.of(
-                Arguments.of(candidateLottoTicket_ExpectingNoPrize_1, winningLottoNumber, LottoResult.NO_PRIZE),
-                Arguments.of(candidateLottoTicket_ExpectingNoPrize_2, winningLottoNumber, LottoResult.NO_PRIZE),
-                Arguments.of(candidateLottoTicket_ExpectingNoPrize_3, winningLottoNumber, LottoResult.NO_PRIZE),
-                Arguments.of(candidateLottoTicket_ExpectingNoPrize_4, winningLottoNumber, LottoResult.NO_PRIZE),
-                Arguments.of(candidateLottoTicket_ExpectingFifthPrize, winningLottoNumber, LottoResult.FIFTH_PRIZE),
-                Arguments.of(candidateLottoTicket_ExpectingFourthPrize, winningLottoNumber, LottoResult.FOURTH_PRIZE),
-                Arguments.of(candidateLottoTicket_ExpectingThridPrize, winningLottoNumber, LottoResult.THIRD_PRIZE),
-                Arguments.of(candidateLottoTicket_ExpectingSecondPrize, winningLottoNumber, LottoResult.SECOND_PRIZE),
-                Arguments.of(candidateLottoTicket_ExpectingFirstPrize, winningLottoNumber, LottoResult.FIRST_PRIZE)
+                Arguments.of(candidateLottoTicket_ExpectingNoPrize_1, lottoWinningNumber, LottoResult.NO_PRIZE),
+                Arguments.of(candidateLottoTicket_ExpectingNoPrize_2, lottoWinningNumber, LottoResult.NO_PRIZE),
+                Arguments.of(candidateLottoTicket_ExpectingNoPrize_3, lottoWinningNumber, LottoResult.NO_PRIZE),
+                Arguments.of(candidateLottoTicket_ExpectingNoPrize_4, lottoWinningNumber, LottoResult.NO_PRIZE),
+                Arguments.of(candidateLottoTicket_ExpectingFifthPrize, lottoWinningNumber, LottoResult.FIFTH_PRIZE),
+                Arguments.of(candidateLottoTicket_ExpectingFourthPrize, lottoWinningNumber, LottoResult.FOURTH_PRIZE),
+                Arguments.of(candidateLottoTicket_ExpectingThridPrize, lottoWinningNumber, LottoResult.THIRD_PRIZE),
+                Arguments.of(candidateLottoTicket_ExpectingSecondPrize, lottoWinningNumber, LottoResult.SECOND_PRIZE),
+                Arguments.of(candidateLottoTicket_ExpectingFirstPrize, lottoWinningNumber, LottoResult.FIRST_PRIZE)
         );
     }
 }

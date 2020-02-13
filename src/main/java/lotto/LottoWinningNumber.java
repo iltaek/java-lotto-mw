@@ -4,24 +4,24 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class WinningLottoNumber {
+public class LottoWinningNumber {
     private final List<LottoNumber> winnerLottoNumbers;
     private final LottoNumber bonusNumber;
 
-    public WinningLottoNumber(List<LottoNumber> winningLottoNumbers, LottoNumber bonusNumber) {
-        checkValidation(winningLottoNumbers, bonusNumber);
+    public LottoWinningNumber(List<LottoNumber> lottoWinningNumbers, LottoNumber bonusNumber) {
+        checkValidation(lottoWinningNumbers, bonusNumber);
 
-        this.winnerLottoNumbers = winningLottoNumbers;
+        this.winnerLottoNumbers = lottoWinningNumbers;
         this.bonusNumber = bonusNumber;
     }
 
-    private void checkValidation(List<LottoNumber> winningLottoNumbers, LottoNumber bonusNumber) {
-        if (winningLottoNumbers == null || winningLottoNumbers.size() != LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE) {
+    private void checkValidation(List<LottoNumber> lottoWinningNumbers, LottoNumber bonusNumber) {
+        if (lottoWinningNumbers == null || lottoWinningNumbers.size() != LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE) {
             throw new IllegalArgumentException(LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE_ERROR_MESSAGE);
         }
 
-        Set<LottoNumber> winningLottoNumbersWithoutDuplicates = new HashSet<>(winningLottoNumbers);
-        if (winningLottoNumbersWithoutDuplicates.size() != LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE) {
+        Set<LottoNumber> lottoWinningNumbersWithoutDuplicates = new HashSet<>(lottoWinningNumbers);
+        if (lottoWinningNumbersWithoutDuplicates.size() != LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE) {
             throw new IllegalArgumentException(LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE_ERROR_MESSAGE);
         }
 
@@ -29,7 +29,7 @@ public class WinningLottoNumber {
             throw new IllegalArgumentException(LottoStaticConstants.LOTTO_BONUS_NUMBER_EMPTY_ERROR_MESSAGE);
         }
 
-        if (winningLottoNumbers.contains(bonusNumber)) {
+        if (lottoWinningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(LottoStaticConstants.LOTTO_BONUS_NUMBER_DUPLICATED_ERROR_MESSAGE);
         }
     }

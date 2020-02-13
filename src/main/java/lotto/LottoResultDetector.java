@@ -3,11 +3,11 @@ package lotto;
 import java.util.Arrays;
 
 public class LottoResultDetector {
-    public LottoResult getLottoResult(LottoTicket candidateLottoTicket, WinningLottoNumber winningLottoNumber) {
-        int matchingNumberCount = candidateLottoTicket.countMatchingNumbers(winningLottoNumber);
+    public LottoResult getLottoResult(LottoTicket candidateLottoTicket, LottoWinningNumber lottoWinningNumber) {
+        int matchingNumberCount = candidateLottoTicket.countMatchingNumbers(lottoWinningNumber);
 
         if (matchingNumberCount == 5) {
-            boolean doesContainBonusNumber = candidateLottoTicket.doesContainBonusNumber(winningLottoNumber);
+            boolean doesContainBonusNumber = candidateLottoTicket.doesContainBonusNumber(lottoWinningNumber);
             return getLottoResultWithRespectToBonusNumber(doesContainBonusNumber);
         }
 

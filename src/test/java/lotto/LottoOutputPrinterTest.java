@@ -41,10 +41,10 @@ class LottoOutputPrinterTest {
     }
 
     private static void generateLottoResults() {
-        LottoNumber[] winningLottoNumbers = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_10, LottoNumber.LOTTO_NUMBER_11, LottoNumber.LOTTO_NUMBER_20};
-        WinningLottoNumber winningLottoNumber = new WinningLottoNumber(Arrays.asList(winningLottoNumbers), LottoNumber.LOTTO_NUMBER_30);
+        LottoNumber[] lottoWinningNumbers = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_10, LottoNumber.LOTTO_NUMBER_11, LottoNumber.LOTTO_NUMBER_20};
+        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(Arrays.asList(lottoWinningNumbers), LottoNumber.LOTTO_NUMBER_30);
 
-        lottoResults = lottoTickets.getLottoResults(winningLottoNumber);
+        lottoResults = lottoTickets.getLottoResults(lottoWinningNumber);
     }
 
     @Test
