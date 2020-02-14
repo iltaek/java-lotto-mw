@@ -62,12 +62,18 @@ public class LottoUserInput {
     }
 
     public void setBonusNumber(String bonusNumberString) {
-        int bonusNumber = parseStringToPositiveInteger(bonusNumberString);
+        int bonusNumberInteger = parseStringToPositiveInteger(bonusNumberString);
 
-        this.bonusNumber = Arrays.stream(LottoNumber.values())
-                .filter(lottoNumber -> lottoNumber.isCorrespondingLottoNumber(bonusNumber))
+        LottoNumber bonusNumber = Arrays.stream(LottoNumber.values())
+                .filter(lottoNumber -> lottoNumber.isCorrespondingLottoNumber(bonusNumberInteger))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(LottoStaticConstants.LOTTO_NUMBER_RANGE_ERROR_MESSAGE));
+
+        if (this.lottoWinningTicket.contains(bonusNumber)) {
+            throw new IllegalArgumentException(LottoStaticConstants.LOTTO_BONUS_NUMBER_DUPLICATED_ERROR_MESSAGE);
+        }
+
+        this.bonusNumber = bonusNumber;
     }
 
     private int parseStringToPositiveInteger(String string) {
