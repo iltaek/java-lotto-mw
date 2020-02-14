@@ -78,7 +78,7 @@ class LottoUserInputTest {
     @ValueSource(strings = {"1, 2, 3, 4, 5, 6.0", "1, 2, 3, 4, 5, -6", "1, 2, 3, 4, 5, *", "1, 2, 3, 4, 5, A", "1, 2, 3, 4, , 6", "1, 2, 3, 4, 5, , 6"})
     void setLottoWinningNumbersTest_1(String lottoWinningNumbersString) {
         Assertions.assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoUserInput().setLottoWinningNumbers(lottoWinningNumbersString))
+                .isThrownBy(() -> new LottoUserInput().setLottoWinningTicket(lottoWinningNumbersString))
                 .withMessage(LottoStaticConstants.LOTTO_INPUT_NUMBER_INVALID_ERROR_MESSAGE);
     }
 
@@ -87,7 +87,7 @@ class LottoUserInputTest {
     @ValueSource(strings = {"1, 2, 3, 4, 5, 0", "1, 2, 3, 4, 5, 46"})
     void setLottoWinningNumbersTest_2(String lottoWinningNumbersString) {
         Assertions.assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoUserInput().setLottoWinningNumbers(lottoWinningNumbersString))
+                .isThrownBy(() -> new LottoUserInput().setLottoWinningTicket(lottoWinningNumbersString))
                 .withMessage(LottoStaticConstants.LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
     }
 
@@ -96,7 +96,7 @@ class LottoUserInputTest {
     @ValueSource(strings = {"1, 2, 3, 4, 5", "1, 2, 3, 4, 5, 5", "1, 2, 3, 4, 5, 5, 6"})
     void setLottoWinningNumbersTest_3(String lottoWinningNumbersString) {
         Assertions.assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoUserInput().setLottoWinningNumbers(lottoWinningNumbersString))
+                .isThrownBy(() -> new LottoUserInput().setLottoWinningTicket(lottoWinningNumbersString))
                 .withMessage(LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE_ERROR_MESSAGE);
     }
 

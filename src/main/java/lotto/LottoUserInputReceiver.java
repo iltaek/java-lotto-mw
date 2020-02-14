@@ -24,7 +24,7 @@ public class LottoUserInputReceiver {
 
     public LottoUserInput receiveLottoWinningNumberInformation() {
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
-        lottoUserInput.setLottoWinningNumbers(scanner.nextLine());
+        lottoUserInput.setLottoWinningTicket(scanner.nextLine());
 
         System.out.println("지난 주 보너스 번호를 입력해 주세요.");
         lottoUserInput.setBonusNumber(scanner.nextLine());

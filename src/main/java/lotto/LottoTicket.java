@@ -24,6 +24,10 @@ public class LottoTicket {
         }
     }
 
+    public boolean contains(LottoNumber lottoNumber) {
+        return this.lottoTicket.contains(lottoNumber);
+    }
+
     public int countMatchingNumbers(LottoWinningNumber lottoWinningNumber) {
         return lottoWinningNumber.countMatchingNumbers(this.lottoTicket);
     }

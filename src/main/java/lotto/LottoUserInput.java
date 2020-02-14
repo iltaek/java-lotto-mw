@@ -1,12 +1,14 @@
 package lotto;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class LottoUserInput {
     private int numberOfPurchasedLottoTicket;
     private int numberOfManuallyPurchasedLottoTicket;
     private LottoTickets manuallyPurchasedLottoTickets = new LottoTickets();
-    private List<LottoNumber> lottoWinningNumbers = new ArrayList<>();
+    private LottoTicket lottoWinningTicket;
     private LottoNumber bonusNumber;
 
     public void setNumberOfPurchasedLottoTicket(String priceOfLottoTicketPurchasedString) {
@@ -46,30 +48,17 @@ public class LottoUserInput {
         this.manuallyPurchasedLottoTickets.addLottoTicket(manuallyPurchasedLottoTicket);
     }
 
-    public void setLottoWinningNumbers(String lottoWinningNumbersString) {
+    public void setLottoWinningTicket(String lottoWinningNumbersString) {
         String[] lottoWinningNumbersStringArray = lottoWinningNumbersString.replace(" ", "")
-                .split(",");
+                .split(LottoStaticConstants.LOTTO_INPUT_DELIMITER);
 
+        List<Integer> lottoWinningNumbersssss = new ArrayList<>(6);
         for (String stringElement : lottoWinningNumbersStringArray) {
-            int lottoWinningNumber = parseStringToPositiveInteger(stringElement);
-
-            LottoNumber correspondingLottoNumber = Arrays.stream(LottoNumber.values())
-                    .filter(lottoNumber -> lottoNumber.isCorrespondingLottoNumber(lottoWinningNumber))
-                    .findFirst()
-                    .orElseThrow(() -> new IllegalArgumentException(LottoStaticConstants.LOTTO_NUMBER_RANGE_ERROR_MESSAGE));
-
-            lottoWinningNumbers.add(correspondingLottoNumber);
+            lottoWinningNumbersssss.add(parseStringToPositiveInteger(stringElement));
         }
 
-        if (this.lottoWinningNumbers.size() != 6) {
-            throw new IllegalArgumentException(LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE_ERROR_MESSAGE);
-        }
-
-        Set<LottoNumber> lottoWinningNumbersWithoutDuplicates = new HashSet<>(lottoWinningNumbers);
-        if (lottoWinningNumbersWithoutDuplicates.size() != LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE) {
-            throw new IllegalArgumentException(LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE_ERROR_MESSAGE);
-        }
-
+        LottoMachine lottoMachine = new LottoMachine();
+        this.lottoWinningTicket = lottoMachine.generateLottoTicketManually(lottoWinningNumbersssss);
     }
 
     public void setBonusNumber(String bonusNumberString) {
@@ -110,6 +99,6 @@ public class LottoUserInput {
     }
 
     public LottoWinningNumber getLottoWinningNumber() {
-        return new LottoWinningNumber(lottoWinningNumbers, bonusNumber);
+        return new LottoWinningNumber(lottoWinningTicket, bonusNumber);
     }
 }

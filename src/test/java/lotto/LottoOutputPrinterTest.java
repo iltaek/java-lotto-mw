@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,8 +42,10 @@ class LottoOutputPrinterTest {
     }
 
     private static void generateLottoResults() {
-        LottoNumber[] lottoWinningNumbers = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_10, LottoNumber.LOTTO_NUMBER_11, LottoNumber.LOTTO_NUMBER_20};
-        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(Arrays.asList(lottoWinningNumbers), LottoNumber.LOTTO_NUMBER_30);
+        LottoNumber[] lottoWinningNumbersInArray = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_10, LottoNumber.LOTTO_NUMBER_11, LottoNumber.LOTTO_NUMBER_20};
+        List<LottoNumber> lottoWinningNumbers = Arrays.asList(lottoWinningNumbersInArray);
+        LottoTicket lottoWinningTicket = new LottoTicket(lottoWinningNumbers);
+        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(lottoWinningTicket, LottoNumber.LOTTO_NUMBER_30);
 
         lottoResults = lottoTickets.getLottoResults(lottoWinningNumber);
     }

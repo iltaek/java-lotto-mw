@@ -1,6 +1,4 @@
 # 구현해야 할 사항 목록
- * Model 개선
-   - LottinWinningNumber가 LottoTicket을 활용하도록 개선.
     
 # 구현 완료 한 사항 목록
  * Model 구현
@@ -19,4 +17,6 @@
    - 로또 프로그램 구동을 위해 사용자 입력 값을 받는 LottoUserInputReceiver 클래스.
  * Controller 구현
    - 로또 프로그램을 실행하는 LottoMain 클래스.
+ * Model 개선
+   - LottinWinningNumber가 LottoTicket을 활용하도록 개선.
    

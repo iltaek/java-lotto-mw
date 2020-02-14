@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,9 +22,6 @@ class LottoResultTest {
     }
 
     private static Stream<Arguments> getLottoResultTestData() {
-        LottoNumber[] lottoWinningNumbers = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_4, LottoNumber.LOTTO_NUMBER_5, LottoNumber.LOTTO_NUMBER_6};
-        LottoNumber bonusNumber = LottoNumber.LOTTO_NUMBER_7;
-
         LottoNumber[] lottoNumbers_ExpectingNoPrize_1 = {LottoNumber.LOTTO_NUMBER_40, LottoNumber.LOTTO_NUMBER_41, LottoNumber.LOTTO_NUMBER_42, LottoNumber.LOTTO_NUMBER_43, LottoNumber.LOTTO_NUMBER_44, LottoNumber.LOTTO_NUMBER_45};
         LottoNumber[] lottoNumbers_ExpectingNoPrize_2 = {LottoNumber.LOTTO_NUMBER_7, LottoNumber.LOTTO_NUMBER_41, LottoNumber.LOTTO_NUMBER_42, LottoNumber.LOTTO_NUMBER_43, LottoNumber.LOTTO_NUMBER_44, LottoNumber.LOTTO_NUMBER_45};
         LottoNumber[] lottoNumbers_ExpectingNoPrize_3 = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_41, LottoNumber.LOTTO_NUMBER_42, LottoNumber.LOTTO_NUMBER_43, LottoNumber.LOTTO_NUMBER_44, LottoNumber.LOTTO_NUMBER_45};
@@ -34,8 +32,6 @@ class LottoResultTest {
         LottoNumber[] lottoNumbers_ExpectingSecondPrize = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_4, LottoNumber.LOTTO_NUMBER_5, LottoNumber.LOTTO_NUMBER_7};
         LottoNumber[] lottoNumbers_ExpectingFirstPrize = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_4, LottoNumber.LOTTO_NUMBER_5, LottoNumber.LOTTO_NUMBER_6};
 
-        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(Arrays.asList(lottoWinningNumbers), bonusNumber);
-
         LottoTicket candidateLottoTicket_ExpectingNoPrize_1 = new LottoTicket(Arrays.asList(lottoNumbers_ExpectingNoPrize_1));
         LottoTicket candidateLottoTicket_ExpectingNoPrize_2 = new LottoTicket(Arrays.asList(lottoNumbers_ExpectingNoPrize_2));
         LottoTicket candidateLottoTicket_ExpectingNoPrize_3 = new LottoTicket(Arrays.asList(lottoNumbers_ExpectingNoPrize_3));
@@ -45,6 +41,12 @@ class LottoResultTest {
         LottoTicket candidateLottoTicket_ExpectingThridPrize = new LottoTicket(Arrays.asList(lottoNumbers_ExpectingThridPrize));
         LottoTicket candidateLottoTicket_ExpectingSecondPrize = new LottoTicket(Arrays.asList(lottoNumbers_ExpectingSecondPrize));
         LottoTicket candidateLottoTicket_ExpectingFirstPrize = new LottoTicket(Arrays.asList(lottoNumbers_ExpectingFirstPrize));
+
+        LottoNumber[] lottoWinningNumbersInArray = {LottoNumber.LOTTO_NUMBER_1, LottoNumber.LOTTO_NUMBER_2, LottoNumber.LOTTO_NUMBER_3, LottoNumber.LOTTO_NUMBER_4, LottoNumber.LOTTO_NUMBER_5, LottoNumber.LOTTO_NUMBER_6};
+        List<LottoNumber> lottoWinningNumbers = Arrays.asList(lottoWinningNumbersInArray);
+        LottoTicket lottoWinningTicket = new LottoTicket(lottoWinningNumbers);
+        LottoNumber bonusNumber = LottoNumber.LOTTO_NUMBER_7;
+        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(lottoWinningTicket, bonusNumber);
 
         return Stream.of(
                 Arguments.of(candidateLottoTicket_ExpectingNoPrize_1, lottoWinningNumber, LottoResult.NO_PRIZE),
