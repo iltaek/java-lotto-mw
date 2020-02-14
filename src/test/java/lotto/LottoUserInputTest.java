@@ -117,4 +117,16 @@ class LottoUserInputTest {
                 .isThrownBy(() -> new LottoUserInput().setBonusNumber(bonusNumberString))
                 .withMessage(LottoStaticConstants.LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
     }
+
+    @ParameterizedTest
+    @Description("로또 보너스 번호가 로또 당첨 번호와 중복되도록 입력되었을 경우 에러가 발생하는지 테스트.")
+    @ValueSource(strings = {"1", "2", "3", "4", "5", "6"})
+    void setBonusNumberTest_3(String bonusNumberString) {
+        LottoUserInput lottoUserInput = new LottoUserInput();
+        lottoUserInput.setLottoWinningTicket("1, 2, 3, 4, 5, 6");
+
+        Assertions.assertThatIllegalArgumentException()
+                .isThrownBy(() -> lottoUserInput.setBonusNumber(bonusNumberString))
+                .withMessage(LottoStaticConstants.LOTTO_BONUS_NUMBER_DUPLICATED_ERROR_MESSAGE);
+    }
 }
