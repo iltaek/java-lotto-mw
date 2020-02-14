@@ -1,4 +1,6 @@
 # 구현해야 할 사항 목록
+ * View 개선
+   - LottoUserInputReceiver가 사용자의 입력 오류 이후 재시도를 요청하도록 개선.
     
 # 구현 완료 한 사항 목록
  * Model 구현
