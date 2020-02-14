@@ -28,8 +28,10 @@ public class LottoTicket {
         return this.lottoTicket.contains(lottoNumber);
     }
 
-    public int countMatchingNumbers(LottoWinningNumber lottoWinningNumber) {
-        return lottoWinningNumber.countMatchingNumbers(this.lottoTicket);
+    public int countMatchingNumbers(LottoTicket lottoWinningTicket) {
+        return (int) this.lottoTicket.stream()
+                .filter(lottoWinningTicket :: contains)
+                .count();
     }
 
     public boolean doesContainBonusNumber(LottoWinningNumber lottoWinningNumber) {

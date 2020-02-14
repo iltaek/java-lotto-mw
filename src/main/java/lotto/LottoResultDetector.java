@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class LottoResultDetector {
     public LottoResult getLottoResult(LottoTicket candidateLottoTicket, LottoWinningNumber lottoWinningNumber) {
-        int matchingNumberCount = candidateLottoTicket.countMatchingNumbers(lottoWinningNumber);
+        int matchingNumberCount = lottoWinningNumber.countMatchingNumbers(candidateLottoTicket);
+
 
         if (matchingNumberCount == 5) {
             boolean doesContainBonusNumber = candidateLottoTicket.doesContainBonusNumber(lottoWinningNumber);

@@ -27,10 +27,8 @@ public class LottoWinningNumber {
         }
     }
 
-    public int countMatchingNumbers(List<LottoNumber> candidateLottoNumbers) {
-        return (int) candidateLottoNumbers.stream()
-                .filter(lottoWinningTicket:: contains)
-                .count();
+    public int countMatchingNumbers(LottoTicket candidateLottoTicket) {
+        return candidateLottoTicket.countMatchingNumbers(this.lottoWinningTicket);
     }
 
     public boolean doesContainBonusNumber(List<LottoNumber> candidateLottoNumbers) {

@@ -1,6 +1,4 @@
 # 구현해야 할 사항 목록
- * Model 개선
-   - LottoResultDetector가 LottoResult를 얻는 과정에서 호출하는 API chain이 parameter로 First Class Collection을 활용하도록 개선.
     
 # 구현 완료 한 사항 목록
  * Model 구현
@@ -21,4 +19,5 @@
    - 로또 프로그램을 실행하는 LottoMain 클래스.
  * Model 개선
    - LottoWinningNumber가 LottoTicket을 활용하도록 개선.
+   - LottoResultDetector가 LottoResult를 얻는 과정에서 호출하는 API chain이 parameter로 First Class Collection을 활용하도록 개선.
    
