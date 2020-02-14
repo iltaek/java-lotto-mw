@@ -43,12 +43,13 @@ public class Main {
 
         // 지난 주 당첨 번호 입력
         String userInput4winningNumbers;
+        int userInput4bonusNumber;
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         userInput4winningNumbers = userInput.next();
         System.out.println("보너스 볼을 입력해 주세요.");
-        userInput4winningNumbers += "," + userInput.next();
+        userInput4bonusNumber = userInput.nextInt();
 
-        LottoDraw.inputWinningLottoPaper(userInput4winningNumbers);
+        LottoDraw.inputWinningLottoPaper(userInput4winningNumbers, userInput4bonusNumber) ;
         LottoDraw.submitMyLottoPapers(lottoPapers);
         LottoDraw.printLottoResult();
     }

@@ -9,8 +9,8 @@ public class LottoDraw {
     private static WinningNumbers winningLottoNumbers;
     private static Map<Prize, Integer> resultMap;
 
-    public static void inputWinningLottoPaper(String input4WinningNumbers) {
-        winningLottoNumbers = WinningLottoNumberSelector.getWinningNumbers(input4WinningNumbers);
+    public static void inputWinningLottoPaper(String input4WinningNumbers, int input4BonusNumber) {
+        winningLottoNumbers = WinningLottoNumberSelector.getWinningNumbers(input4WinningNumbers, input4BonusNumber);
     }
 
     public static void submitMyLottoPapers(LottoPapers lottoPapers) {

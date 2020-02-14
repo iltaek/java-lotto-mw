@@ -1,7 +1,6 @@
 [TODO]
 - 리팩토링
   - 유사 클래스 정리 고려(LottoPaper, WinningNumbers 등)
-  - 자료구조 검토 (LinkedHashSet)
 
 [DONE]
 - User Input
@@ -15,9 +14,11 @@
 - 리팩토링 진행
   - Indentation 줄이기
   - LottoNumber, LottoPaper 만들기
+  - WinningNumbers 에 bonusNumber 필드 추가 및 이를 이용하여 2등 결정
+  - Prize enum 에서 switch 제거
 - 당첨 번호 뽑는 클래스 구현
 - Prize enum 구현
 - 버그 수정
-  - 중복 테스트에 LottoNumber가 아니라, LottoNumber.selectedNumber 값을 비교해야 
+  - 중복 테스트에 LottoNumber 가 아니라, LottoNumber.selectedNumber 값을 비교해야 
 - 당첨 결과를 뽑는 클래스 구현
   - 통계 클래스 구현

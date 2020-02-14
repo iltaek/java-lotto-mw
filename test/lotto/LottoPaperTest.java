@@ -14,8 +14,7 @@ class LottoPaperTest {
     public void isNotDuplicatedNumbers() {
         String testInput = "1,2,3,4,5,5";
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            new LottoPaper(
-                LottoNumberManuallySelector.marking(testInput).getMarkedLottoNumbers());
+            LottoNumberManuallySelector.marking(testInput).getMarkedLottoNumbers();
         }).withMessage("로또 번호는 중복될 수 없습니다.");
     }
 }

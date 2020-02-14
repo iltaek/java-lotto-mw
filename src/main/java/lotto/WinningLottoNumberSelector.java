@@ -7,14 +7,16 @@ public class WinningLottoNumberSelector {
 
     static final String DELIMITER = ",";
 
-    public static WinningNumbers getWinningNumbers(String input4WinningPaper) {
+    public static WinningNumbers getWinningNumbers(String input4WinningPaper, int input4BonusNumber) {
         String[] winningNumberStrArray = input4WinningPaper.split(DELIMITER);
 
-        UserInputValidator.validateSelectedSevenNumbers(winningNumberStrArray);
+        UserInputValidator.validateSelectedSixNumbers(winningNumberStrArray);
         Set<LottoNumber> winningNumberSet = convertStrArrayToLottoNumberArray(
             winningNumberStrArray);
 
-        WinningNumbers winningNumbers = new WinningNumbers(winningNumberSet);
+        LottoNumber bonusNumber = LottoNumber.of(input4BonusNumber);
+
+        WinningNumbers winningNumbers = new WinningNumbers(winningNumberSet, bonusNumber);
 
         return winningNumbers;
     }

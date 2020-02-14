@@ -31,25 +31,26 @@ public class LottoPaper {
     public Prize matchingCountsLottoNumbers(WinningNumbers winningNumbers) {
         int matchingCounts = 0;
         Set<LottoNumber> winningLottoNumbers = winningNumbers.getWinningNumbers();
+        LottoNumber bonusNumber = winningNumbers.getBonusNumber();
 
-        Iterator<LottoNumber> lottoNumberIterator = winningLottoNumbers.iterator();
-
-        // 당첨 번호 = 1 가산점
-        for (int i = 0; i < winningLottoNumbers.size() - 1; i++) {
-            matchingCounts += match(lottoNumberIterator.next(), 1);
+        for (LottoNumber winningNumber : winningLottoNumbers) {
+            if ( markedLottoNumbers.contains(winningNumber)) {
+                matchingCounts++;
+            }
         }
 
-        // 보너스 당첨 번호 = 10 가산점
-        matchingCounts += match(lottoNumberIterator.next(), 10);
-
-        return Prize.of(matchingCounts);
-    }
-
-    private int match(LottoNumber winningNumber, int score) {
-        if (markedLottoNumbers.contains(winningNumber)) {
-            return score;
+        if ( matchingCounts == 5) {
+            if (markedLottoNumbers.contains(bonusNumber)) {
+                return Prize.SECOND_PRIZE;
+            }
         }
-        return 0;
+        for ( Prize prize : Prize.values()) {
+            if ( prize.required() == matchingCounts) {
+                return prize;
+            }
+        }
+
+        return Prize.LOSE_PRIZE;
     }
 
     @Override
