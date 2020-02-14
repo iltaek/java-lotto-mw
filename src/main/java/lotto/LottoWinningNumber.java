@@ -13,8 +13,8 @@ public class LottoWinningNumber {
         this.bonusNumber = bonusNumber;
     }
 
-    private void checkValidation(LottoTicket winningLottoTicket, LottoNumber bonusNumber) {
-        if (winningLottoTicket == null) {
+    private void checkValidation(LottoTicket lottoWinningTicket, LottoNumber bonusNumber) {
+        if (lottoWinningTicket == null) {
             throw new IllegalArgumentException(LottoStaticConstants.LOTTO_TICKET_NUMBER_SIZE_ERROR_MESSAGE);
         }
 
@@ -22,7 +22,7 @@ public class LottoWinningNumber {
             throw new IllegalArgumentException(LottoStaticConstants.LOTTO_BONUS_NUMBER_EMPTY_ERROR_MESSAGE);
         }
 
-        if (winningLottoTicket.contains(bonusNumber)) {
+        if (lottoWinningTicket.contains(bonusNumber)) {
             throw new IllegalArgumentException(LottoStaticConstants.LOTTO_BONUS_NUMBER_DUPLICATED_ERROR_MESSAGE);
         }
     }

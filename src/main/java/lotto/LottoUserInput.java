@@ -52,13 +52,13 @@ public class LottoUserInput {
         String[] lottoWinningNumbersStringArray = lottoWinningNumbersString.replace(" ", "")
                 .split(LottoStaticConstants.LOTTO_INPUT_DELIMITER);
 
-        List<Integer> lottoWinningNumbersssss = new ArrayList<>(6);
+        List<Integer> lottoWinningNumbers = new ArrayList<>(6);
         for (String stringElement : lottoWinningNumbersStringArray) {
-            lottoWinningNumbersssss.add(parseStringToPositiveInteger(stringElement));
+            lottoWinningNumbers.add(parseStringToPositiveInteger(stringElement));
         }
 
         LottoMachine lottoMachine = new LottoMachine();
-        this.lottoWinningTicket = lottoMachine.generateLottoTicketManually(lottoWinningNumbersssss);
+        this.lottoWinningTicket = lottoMachine.generateLottoTicketManually(lottoWinningNumbers);
     }
 
     public void setBonusNumber(String bonusNumberString) {
