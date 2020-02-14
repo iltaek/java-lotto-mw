@@ -1,4 +1,6 @@
 # 구현해야 할 사항 목록
+ * Controller 개선
+   - Controller 기능 메소드 분리 및 객체 지향화.
     
 # 구현 완료 한 사항 목록
  * Model 구현
