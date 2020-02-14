@@ -1,6 +1,4 @@
 # 구현해야 할 사항 목록
- * Controller 개선
-   - Controller 기능 메소드 분리 및 객체 지향화.
     
 # 구현 완료 한 사항 목록
  * Model 구현
@@ -22,4 +20,6 @@
  * Model 개선
    - LottoWinningNumber가 LottoTicket을 활용하도록 개선.
    - LottoResultDetector가 LottoResult를 얻는 과정에서 호출하는 API chain이 parameter로 First Class Collection을 활용하도록 개선.
+ * Controller 개선
+   - Controller 기능 메소드 분리 및 객체 지향화.
    

@@ -2,30 +2,16 @@ package lotto;
 
 public class LottoMain {
     public static void main(String[] args) {
-        LottoUserInputReceiver lottoUserInputReceiver = new LottoUserInputReceiver();
+        new LottoMain().run(new LottoUserInputReceiver(), new LottoOutputPrinter());
+    }
+
+    private void run(LottoUserInputReceiver lottoUserInputReceiver, LottoOutputPrinter lottoOutputPrinter) {
         LottoUserInput lottoUserInput = lottoUserInputReceiver.receiveLottoPurchaseInformation();
-
-        int numberOfPurchasedLottoTicket = lottoUserInput.getNumberOfPurchasedLottoTicket();
-        int numberOfManuallyPurchasedLottoTicket = lottoUserInput.getNumberOfManuallyPurchasedLottoTicket();
-
-        LottoTickets purchasedLottoTickets = new LottoTickets();
-        LottoTickets manuallyPurchasedLottoTickets = lottoUserInput.getManuallyPurchasedLottoTickets();
-        purchasedLottoTickets.addAllLottoTickets(manuallyPurchasedLottoTickets);
-
-        int numberOfAutomaticallyPurchasedLottoTicket = numberOfPurchasedLottoTicket - numberOfManuallyPurchasedLottoTicket;
-        LottoMachine lottoMachine = new LottoMachine();
-        for (int i = 0; i < numberOfAutomaticallyPurchasedLottoTicket; i++) {
-            purchasedLottoTickets.addLottoTicket(lottoMachine.generateLottoTicketAutomatically());
-        }
-
-        LottoOutputPrinter lottoOutputPrinter = new LottoOutputPrinter();
-        lottoOutputPrinter.printResultOfPurchase(purchasedLottoTickets, numberOfManuallyPurchasedLottoTicket);
+        LottoTickets purchasedLottoTickets = lottoUserInput.getResultOfPurchase();
+        lottoOutputPrinter.printResultOfPurchase(purchasedLottoTickets);
 
         lottoUserInput = lottoUserInputReceiver.receiveLottoWinningNumberInformation();
-
-        LottoWinningNumber lottoWinningNumber = lottoUserInput.getLottoWinningNumber();
-        LottoResults lottoResults = purchasedLottoTickets.getLottoResults(lottoWinningNumber);
-
+        LottoResults lottoResults = lottoUserInput.getLottoResults(purchasedLottoTickets);
         lottoOutputPrinter.printResultOfStatistics(lottoResults);
     }
 }

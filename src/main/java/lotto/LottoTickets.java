@@ -5,15 +5,28 @@ import java.util.List;
 
 public class LottoTickets {
     private List<LottoTicket> lottoTickets = new ArrayList<>();
+    private int numberOfManuallyPurchasedLottoTicket;
 
     public void addLottoTicket(LottoTicket lottoTicket) {
         this.lottoTickets.add(lottoTicket);
     }
 
-    public void addAllLottoTickets(LottoTickets lottoTickets) {
-        for (LottoTicket lottoTicket : lottoTickets.lottoTickets) {
+    public void addAllManuallyPurchasedLottoTickets(LottoTickets manuallyPurchasedLottoTickets) {
+        List<LottoTicket> listOfManuallyPurchasedLottoTicket = manuallyPurchasedLottoTickets.lottoTickets;
+
+        for (LottoTicket lottoTicket : listOfManuallyPurchasedLottoTicket) {
             addLottoTicket(lottoTicket);
         }
+
+        this.numberOfManuallyPurchasedLottoTicket += listOfManuallyPurchasedLottoTicket.size();
+    }
+
+    public int getNumberOfManuallyPurchasedLottoTicket() {
+        return this.numberOfManuallyPurchasedLottoTicket;
+    }
+
+    public int getNumberOfAutomaticallyPurchasedLottoTicket() {
+        return this.lottoTickets.size() - this.numberOfManuallyPurchasedLottoTicket;
     }
 
     public LottoResults getLottoResults(LottoWinningNumber lottoWinningNumber) {
@@ -26,10 +39,6 @@ public class LottoTickets {
         }
 
         return lottoResults;
-    }
-
-    public int numberOfLottoTicketPurchased() {
-        return this.lottoTickets.size();
     }
 
     public String printAllLottoNumbers() {

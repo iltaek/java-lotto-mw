@@ -10,18 +10,18 @@ class LottoUserInputTest {
     @ParameterizedTest
     @Description("로또 구입 금액으로 소수나 음수가 입력되었을 경우 에러가 발생하는지 테스트.")
     @ValueSource(strings = {"0.1", "1000.5", "-1", "-1000"})
-    void setNumberOfPurchasedLottoTicketTest_1(String priceOfLottoTicketPurchasedString) {
+    void setNumberOfPurchasedLottoTicketTest_1(String priceOfPurchasedLottoTicketString) {
         Assertions.assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoUserInput().setNumberOfPurchasedLottoTicket(priceOfLottoTicketPurchasedString))
+                .isThrownBy(() -> new LottoUserInput().setNumberOfPurchasedLottoTicket(priceOfPurchasedLottoTicketString))
                 .withMessage(LottoStaticConstants.LOTTO_INPUT_NUMBER_INVALID_ERROR_MESSAGE);
     }
 
     @ParameterizedTest
     @Description("로또 구입 금액으로 1000원의 배수가 아닌 수가 입력되었을 경우 에러가 발생하는지 테스트.")
     @ValueSource(strings = {"1001", "1010", "1100"})
-    void setNumberOfPurchasedLottoTicketTest_2(String priceOfLottoTicketPurchasedString) {
+    void setNumberOfPurchasedLottoTicketTest_2(String priceOfPurchasedLottoTicketString) {
         Assertions.assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoUserInput().setNumberOfPurchasedLottoTicket(priceOfLottoTicketPurchasedString))
+                .isThrownBy(() -> new LottoUserInput().setNumberOfPurchasedLottoTicket(priceOfPurchasedLottoTicketString))
                 .withMessage(LottoStaticConstants.LOTTO_INPUT_NUMBER_NOT_MULTIPLE_OF_THOUSAND_ERROR_MESSAGE);
     }
 

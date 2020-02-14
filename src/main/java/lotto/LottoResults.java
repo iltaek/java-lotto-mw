@@ -39,8 +39,8 @@ public class LottoResults {
     public float getRateOfReturn() {
         float sumOfTotalMoneyPrize = new LottoResult.MoneyPrizeDistributor()
                 .getSumOfTotalMoneyPrizes(this.lottoResults);
-        float priceOfLottoTicketPurchased = this.lottoResults.size() * LottoStaticConstants.LOTTO_TICKET_PRICE;
+        float priceOfPurchasedLottoTicket = this.lottoResults.size() * LottoStaticConstants.LOTTO_TICKET_PRICE;
 
-        return sumOfTotalMoneyPrize / priceOfLottoTicketPurchased;
+        return sumOfTotalMoneyPrize / priceOfPurchasedLottoTicket;
     }
 }

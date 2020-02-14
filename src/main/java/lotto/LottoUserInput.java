@@ -11,18 +11,18 @@ public class LottoUserInput {
     private LottoTicket lottoWinningTicket;
     private LottoNumber bonusNumber;
 
-    public void setNumberOfPurchasedLottoTicket(String priceOfLottoTicketPurchasedString) {
-        int priceOfLottoTicketPurchased = parseStringToPositiveInteger(priceOfLottoTicketPurchasedString);
-        if (priceOfLottoTicketPurchased % LottoStaticConstants.LOTTO_TICKET_PRICE != 0) {
+    public void setNumberOfPurchasedLottoTicket(String priceOfPurchasedLottoTicketString) {
+        int priceOfPurchasedLottoTicket = parseStringToPositiveInteger(priceOfPurchasedLottoTicketString);
+        if (priceOfPurchasedLottoTicket % LottoStaticConstants.LOTTO_TICKET_PRICE != 0) {
             throw new IllegalArgumentException(LottoStaticConstants.LOTTO_INPUT_NUMBER_NOT_MULTIPLE_OF_THOUSAND_ERROR_MESSAGE);
         }
 
-        if (priceOfLottoTicketPurchased == 0) {
+        if (priceOfPurchasedLottoTicket == 0) {
             System.out.println(LottoStaticConstants.LOTTO_INPUT_NUMBER_ZERO_MESSAGE);
             System.exit(0);
         }
 
-        this.numberOfPurchasedLottoTicket = priceOfLottoTicketPurchased / LottoStaticConstants.LOTTO_TICKET_PRICE;
+        this.numberOfPurchasedLottoTicket = priceOfPurchasedLottoTicket / LottoStaticConstants.LOTTO_TICKET_PRICE;
     }
 
     public void setNumberOfManuallyPurchasedLottoTicket(String numberOfManuallyPurchasedLottoTicketString) {
@@ -86,19 +86,25 @@ public class LottoUserInput {
         return positiveInteger;
     }
 
-    public int getNumberOfPurchasedLottoTicket() {
-        return numberOfPurchasedLottoTicket;
+    public LottoTickets getResultOfPurchase() {
+        LottoTickets purchasedLottoTickets = new LottoTickets();
+        purchasedLottoTickets.addAllManuallyPurchasedLottoTickets(this.manuallyPurchasedLottoTickets);
+
+        int numberOfAutomaticallyPurchasedLottoTicket = this.numberOfPurchasedLottoTicket - this.numberOfManuallyPurchasedLottoTicket;
+        LottoMachine lottoMachine = new LottoMachine();
+        for (int i = 0; i < numberOfAutomaticallyPurchasedLottoTicket; i++) {
+            purchasedLottoTickets.addLottoTicket(lottoMachine.generateLottoTicketAutomatically());
+        }
+
+        return purchasedLottoTickets;
+    }
+
+    public LottoResults getLottoResults(LottoTickets purchasedLottoTickets) {
+        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(lottoWinningTicket, bonusNumber);
+        return purchasedLottoTickets.getLottoResults(lottoWinningNumber);
     }
 
     public int getNumberOfManuallyPurchasedLottoTicket() {
         return numberOfManuallyPurchasedLottoTicket;
-    }
-
-    public LottoTickets getManuallyPurchasedLottoTickets() {
-        return manuallyPurchasedLottoTickets;
-    }
-
-    public LottoWinningNumber getLottoWinningNumber() {
-        return new LottoWinningNumber(lottoWinningTicket, bonusNumber);
     }
 }

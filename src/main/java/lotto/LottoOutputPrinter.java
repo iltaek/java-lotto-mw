@@ -1,11 +1,11 @@
 package lotto;
 
 public class LottoOutputPrinter {
-    public void printResultOfPurchase(LottoTickets lottoTickets, int numberOfManuallyPurchasedLottoTicket) {
+    public void printResultOfPurchase(LottoTickets lottoTickets) {
         String result =  "수동으로 " +
-                numberOfManuallyPurchasedLottoTicket +
+                lottoTickets.getNumberOfManuallyPurchasedLottoTicket() +
                 "장, 자동으로 " +
-                (lottoTickets.numberOfLottoTicketPurchased() - numberOfManuallyPurchasedLottoTicket) +
+                lottoTickets.getNumberOfAutomaticallyPurchasedLottoTicket() +
                 "장을 구매했습니다." +
                 "\n" +
                 lottoTickets.printAllLottoNumbers();
