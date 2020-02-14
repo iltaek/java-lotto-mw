@@ -1,4 +1,6 @@
 # 구현해야 할 사항 목록
+ * Model 개선
+   - LottinWinningNumber가 LottoTicket을 활용하도록 개선.
     
 # 구현 완료 한 사항 목록
  * Model 구현
